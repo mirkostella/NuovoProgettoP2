@@ -3,14 +3,11 @@
 
 //standard
 #include <map>
-#include<fstream>
-//QT
-#include <QFile>
-#include <QXmlStreamWriter>
+#include <iostream>
+
 //gerarchia
 #include <grafico.h>
 using std::map;
-using std::fstream;
 using std::pair;
 
 //classe istaziabile
@@ -23,7 +20,11 @@ public:
     map<QString,double> getCoordinate() const;
     void aggiungiCoordinata(const QString&,const double&);
     void eliminaCoordinata(const QString&);
-    void salva(const QString&) const;
-};
 
+    //virtual
+    void salva(const QString&) const;
+    void popola(const QDomElement&);
+    QString getTipo() const;
+};
+std::ostream& operator<<(std::ostream&,const Barre&);
 #endif // BARRE_H

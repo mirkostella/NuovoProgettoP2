@@ -237,6 +237,7 @@ Makefile: ../Charts_Mirko_Stella_1201184/Charts_Mirko_Stella_1201184.pro C:/Qt/5
 		C:/Qt/5.12.2/mingw73_64/lib/Qt5Charts.prl \
 		C:/Qt/5.12.2/mingw73_64/lib/Qt5Widgets.prl \
 		C:/Qt/5.12.2/mingw73_64/lib/Qt5Gui.prl \
+		C:/Qt/5.12.2/mingw73_64/lib/Qt5Xml.prl \
 		C:/Qt/5.12.2/mingw73_64/lib/Qt5Core.prl \
 		C:/Qt/5.12.2/mingw73_64/lib/qtmaind.prl
 	$(QMAKE) -o Makefile ..\Charts_Mirko_Stella_1201184\Charts_Mirko_Stella_1201184.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -414,6 +415,7 @@ C:/Qt/5.12.2/mingw73_64/mkspecs/features/lex.prf:
 C:/Qt/5.12.2/mingw73_64/lib/Qt5Charts.prl:
 C:/Qt/5.12.2/mingw73_64/lib/Qt5Widgets.prl:
 C:/Qt/5.12.2/mingw73_64/lib/Qt5Gui.prl:
+C:/Qt/5.12.2/mingw73_64/lib/Qt5Xml.prl:
 C:/Qt/5.12.2/mingw73_64/lib/Qt5Core.prl:
 C:/Qt/5.12.2/mingw73_64/lib/qtmaind.prl:
 qmake: FORCE

@@ -3,6 +3,8 @@
 
 //gerarchia
 #include "barre.h"
+#include <iostream>
+#include <QXmlParseException>
 
 //standard
 #include <map>
@@ -10,6 +12,7 @@
 //QT
 #include <QString>
 #include <QFile>
+#include <QtXml/QDomDocument>
 
 using std::map;
 
