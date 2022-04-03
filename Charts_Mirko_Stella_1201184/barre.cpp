@@ -10,10 +10,21 @@ map<QString, double> Barre::getCoordinate() const
     return coordinate;
 }
 
-//chiave,valore (se la coordinata é giá presente la modifica)
-void Barre::aggiungiCoordinata(const QString& chiave, const double& valore)
+//se la chiave é giá presente ritorna false
+bool Barre::aggiungiCoordinata(const QString& chiave, const double& valore)
 {
-    coordinate.insert(pair<QString,double>(chiave,valore));
+    pair<map<QString,double>::iterator,bool> ris=coordinate.insert(pair<QString,double>(chiave,valore));
+    return ris.second;
+}
+//se la chiave non esiste ritorna false
+bool Barre::modificaCoordinata(const QString & chiave, const double &nuovoValore)
+{
+   try {
+       coordinate.at(chiave)=nuovoValore;
+   }  catch (const out_of_range& e) {
+        return false;
+   }
+    return true;
 }
 //chiave
 void Barre::eliminaCoordinata(const QString& chiave)
@@ -30,6 +41,7 @@ void Barre::salva(const QString& path) const
     stream.writeStartDocument();
     stream.writeStartElement("radice");
     stream.writeTextElement("tipo","barre");
+    stream.writeTextElement("nome",getNome());
     stream.writeStartElement("dati");
     //ciclo che scrive i dati presenti in coordinate
     for(auto it=coordinate.cbegin();it!=coordinate.cend();++it){
@@ -46,6 +58,8 @@ void Barre::salva(const QString& path) const
 
 void Barre::popola(const QDomElement & radice)
 {
+    QDomElement elementoNome=radice.firstChildElement("nome");
+    setNome(elementoNome.text());
     QDomNodeList listaNodoDati=radice.elementsByTagName("dati");
     QDomNode nodoDati=listaNodoDati.item(0);
     QDomElement elementoDati=nodoDati.toElement();
@@ -65,6 +79,9 @@ QString Barre::getTipo() const
     return "barre";
 }
 std::ostream& operator<<(std::ostream& os,const Barre& b){
+    os<<"nome:";
+    os<<b.getNome().toStdString();
+    os<<std::endl;
     map<QString,double> coordinate=b.getCoordinate();
     for(auto it=coordinate.cbegin();it!=coordinate.cend();++it){
         os<<"chiave:";

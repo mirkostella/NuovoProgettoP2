@@ -1,6 +1,6 @@
 #include "grafico.h"
 
-Grafico::Grafico()
+Grafico::Grafico():nome("")
 {
 
 }

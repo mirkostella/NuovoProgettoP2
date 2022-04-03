@@ -4,11 +4,13 @@
 //standard
 #include <map>
 #include <iostream>
+#include <stdexcept>
+using std::map;
+using std::pair;
+using std::out_of_range;
 
 //gerarchia
 #include <grafico.h>
-using std::map;
-using std::pair;
 
 //classe istaziabile
 class Barre:public Grafico
@@ -18,7 +20,8 @@ private:
 public:
     Barre();
     map<QString,double> getCoordinate() const;
-    void aggiungiCoordinata(const QString&,const double&);
+    bool aggiungiCoordinata(const QString&,const double& valore=0);
+    bool modificaCoordinata(const QString&,const double& nuovoValore);
     void eliminaCoordinata(const QString&);
 
     //virtual
